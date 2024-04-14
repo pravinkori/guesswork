@@ -12,10 +12,14 @@ console.info({ answer });
 function Game() {
   const [guesses, setGuesses] = useState([]);
 
-  function handleSubmitGuess(guess) {
-    setGuesses([...guesses, guess]);
+  function handleSubmitGuess(userInputGuess) {
+    const nextGuess = {
+      value: userInputGuess,
+      id: `${userInputGuess}-${Math.random()}`,
+    };
+    setGuesses([...guesses, nextGuess]);
 
-    console.log("Received Guess:", guess);
+    console.log("Received Guess:", userInputGuess);
   }
 
   return (
