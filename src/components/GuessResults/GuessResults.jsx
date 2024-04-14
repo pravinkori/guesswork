@@ -1,10 +1,5 @@
-function GuessResults() {
-  return (
-    <div className="guess-results">
-      <p className="guess">FIRST</p>
-      <p className="guess">GUESS</p>
-    </div>
-  );
+function GuessResults({ guesses }) {
+  return <div className="guess-results">{guesses.toString()}</div>;
 }
 
 export default GuessResults;
