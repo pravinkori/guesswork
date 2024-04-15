@@ -1,10 +1,10 @@
+import GuessGrid from "../GuessGrid";
+
 function GuessResults({ guesses }) {
   return (
     <div className="guess-results">
       {guesses.map((guess) => (
-        <p key={guess.id} className="guess">
-          {guess.value}
-        </p>
+        <GuessGrid key={guess.id} value={guess.value} />
       ))}
     </div>
   );
