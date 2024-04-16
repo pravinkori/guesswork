@@ -4,6 +4,7 @@ import GuessInput from "../GuessInput";
 import GuessResults from "../GuessResults";
 import { useState } from "react";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
+import GameOverBanner from "../GameOverBanner/GameOverBanner";
 
 // Pick a random word on every pageload
 const answer = sample(WORDS);
@@ -54,6 +55,14 @@ function Game() {
         handleSubmitGuess={handleSubmitGuess}
         gameStatus={gameStatus}
       />
+
+      {gameStatus !== "running" && (
+        <GameOverBanner
+          gameStatus={gameStatus}
+          numOfGuesses={guesses.length}
+          answer={answer}
+        />
+      )}
     </>
   );
 }
