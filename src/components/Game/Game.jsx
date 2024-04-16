@@ -3,6 +3,7 @@ import { WORDS } from "../../data";
 import GuessInput from "../GuessInput";
 import GuessResults from "../GuessResults";
 import { useState } from "react";
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
 // Pick a random word on every pageload
 const answer = sample(WORDS);
@@ -10,6 +11,7 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
+  const [gameStatus, setGameStatus] = useState("running");
   // State variable to store the list of guesses
   const [guesses, setGuesses] = useState([]);
 
@@ -20,8 +22,17 @@ function Game() {
       value: userInputGuess,
       id: `${userInputGuess}-${Math.random()}`,
     };
+
+    // Updated list of guesses after adding the new guess
+    const updatedGuesses = [...guesses, nextGuess];
     // Updating the guesses state with the new array without mutating original array held in state
-    setGuesses([...guesses, nextGuess]);
+    setGuesses(updatedGuesses);
+
+    if (userInputGuess.toUpperCase() === answer) {
+      setGameStatus("won");
+    } else if (updatedGuesses.length >= NUM_OF_GUESSES_ALLOWED) {
+      setGameStatus("lost");
+    }
 
     console.log("Received Guess:", userInputGuess);
   }
@@ -29,6 +40,7 @@ function Game() {
   // Render the GuessResults and GuessInput components
   return (
     <>
+      {gameStatus}
       <GuessResults
         // Passes the list of guess values by mapping over the guesses array
         // and extracting the 'value' property from each guess object
@@ -38,7 +50,10 @@ function Game() {
       />
 
       {/* Passes down the handleSubmitGuess function to GuessInput */}
-      <GuessInput handleSubmitGuess={handleSubmitGuess} />
+      <GuessInput
+        handleSubmitGuess={handleSubmitGuess}
+        gameStatus={gameStatus}
+      />
     </>
   );
 }
