@@ -29,8 +29,13 @@ function Game() {
   // Render the GuessResults and GuessInput components
   return (
     <>
-      {/* Passes down the list of guess values to GuessResults */}
-      <GuessResults guesses={guesses.map((guess) => guess.value)} />
+      <GuessResults
+        // Passes the list of guess values by mapping over the guesses array
+        // and extracting the 'value' property from each guess object
+        guesses={guesses.map((guess) => guess.value)}
+        // Passes the answer to GuessResults component for comparison
+        answer={answer}
+      />
 
       {/* Passes down the handleSubmitGuess function to GuessInput */}
       <GuessInput handleSubmitGuess={handleSubmitGuess} />
