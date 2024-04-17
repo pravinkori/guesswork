@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "../Button";
 
 function GuessInput({ gameStatus, handleSubmitGuess }) {
   const [userInputGuess, setUserInputGuess] = useState("");
@@ -20,19 +21,24 @@ function GuessInput({ gameStatus, handleSubmitGuess }) {
   return (
     <form className="guess-input-wrapper" onSubmit={handleSubmit}>
       <label htmlFor="guess-input">Enter guess:</label>
-      <input
-        required
-        disabled={gameStatus !== "running"}
-        minLength={5}
-        maxLength={5}
-        id="guess-input"
-        type="text"
-        value={userInputGuess}
-        onChange={(event) => {
-          const nextGuess = event.target.value.toUpperCase();
-          setUserInputGuess(nextGuess);
-        }}
-      />
+      <div className="guess-input">
+        <input
+          required
+          disabled={gameStatus !== "running"}
+          minLength={5}
+          maxLength={5}
+          id="guess-input"
+          type="text"
+          value={userInputGuess}
+          onChange={(event) => {
+            const nextGuess = event.target.value.toUpperCase();
+            setUserInputGuess(nextGuess);
+          }}
+        />
+        <Button disabled={gameStatus !== "running"} onClick={handleSubmit}>
+          Submit
+        </Button>
+      </div>
     </form>
   );
 }
