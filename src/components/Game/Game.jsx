@@ -1,10 +1,11 @@
+import { useState } from "react";
 import { sample } from "../../utils";
 import { WORDS } from "../../data";
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 import GuessInput from "../GuessInput";
 import GuessResults from "../GuessResults";
-import { useState } from "react";
-import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
-import GameOverBanner from "../GameOverBanner/GameOverBanner";
+import WonBanner from "../WonBanner";
+import LostBanner from "../LostBanner";
 
 // Pick a random word on every pageload
 const answer = sample(WORDS);
@@ -41,7 +42,9 @@ function Game() {
   // Render the GuessResults and GuessInput components
   return (
     <>
-      {gameStatus}
+      {/* {gameStatus === "running" && `${gameStatus} 🟢`}
+      {gameStatus === "lost" && `${gameStatus} 🔴`} */}
+
       <GuessResults
         // Passes the list of guess values by mapping over the guesses array
         // and extracting the 'value' property from each guess object
@@ -56,13 +59,11 @@ function Game() {
         gameStatus={gameStatus}
       />
 
-      {gameStatus !== "running" && (
-        <GameOverBanner
-          gameStatus={gameStatus}
-          numOfGuesses={guesses.length}
-          answer={answer}
-        />
-      )}
+      {/* Display won banner if gameStatus is won */}
+      {gameStatus === "won" && <WonBanner numOfGuesses={guesses.length} />}
+
+      {/* Display lost banner if gameStatus is lost */}
+      {gameStatus === "lost" && <LostBanner answer={answer} />}
     </>
   );
 }
