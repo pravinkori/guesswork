@@ -1,6 +1,8 @@
 :root {
-  --clr-pushable-bg: hsl(340deg 100% 32%);
-  --clr-front-bg: hsl(345deg 100% 47%);
+  /* --clr-pushable-bg: hsl(340deg 100% 32%); */
+  /* --clr-front-bg: hsl(345deg 100% 47%); */
+  --clr-pushable-bg: hsl(205deg, 100%, 32%);
+  --clr-front-bg: hsl(210deg 100% 47%);
 
   --fs-400: 1rem;
   --fs-500: 1.5rem;
@@ -40,10 +42,10 @@
   border-radius: 12px;
   background: linear-gradient(
     to left,
-    hsl(340deg 100% 10%) 0%,
-    hsl(340deg 80% 50%) 8%,
-    hsl(340deg 80% 50%) 92%,
-    hsl(340deg 100% 10%) 100%
+    hsl(205deg 100% 10%) 0%,
+    hsl(205deg 80% 50%) 8%,
+    hsl(205deg 80% 50%) 92%,
+    hsl(205deg 100% 10%) 100%
   );
 }
 
@@ -52,7 +54,7 @@
   display: block;
   color: white;
   background-color: var(--clr-front-bg);
-  padding: 0.75rem 2.625rem;
+  padding: 0.75rem 1rem;
   border-radius: 0.75rem; /* 12px */
   font-size: var(--fs-500);
   transform: translateY(-0.25rem); /* 4px */

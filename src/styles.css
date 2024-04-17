@@ -170,7 +170,7 @@ h1 {
 .guess-input {
   display: flex;
   flex-direction: row;
-  gap: 7px;
+  gap: 8px;
   align-items: flex-end;
 }
 
@@ -184,7 +184,7 @@ h1 {
   width: 100%;
   font-size: 1.75rem;
   border: 2px solid var(--color-gray-500);
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 8px 16px;
   outline-offset: 4px;
   background: var(--color-background);
