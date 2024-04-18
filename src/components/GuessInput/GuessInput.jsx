@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Button from "../Button";
 
 function GuessInput({ gameStatus, handleSubmitGuess }) {
   const [userInputGuess, setUserInputGuess] = useState("");
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
   console.log({ userInputGuess });
 
   function handleSubmit(event) {
@@ -30,6 +35,7 @@ function GuessInput({ gameStatus, handleSubmitGuess }) {
           id="guess-input"
           type="text"
           value={userInputGuess}
+          ref={inputRef}
           onChange={(event) => {
             const nextGuess = event.target.value.toUpperCase();
             setUserInputGuess(nextGuess);
