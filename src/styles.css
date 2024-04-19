@@ -3,13 +3,13 @@
 */
 html {
   overflow-y: scroll;
-  --game-spacing: 32px;
+  --game-spacing: 1.5rem;
   --header-height: 4rem;
 
-  --color-background: hsl(60, 3%, 89%);
+  --color-background: hsl(60deg, 3%, 89%);
   --color-success: hsl(150deg 70% 30%);
   --color-warning: hsl(35deg, 70%, 55%);
-  --color-input-hover: hsl(221, 72%, 54%);
+  --color-input-hover: hsl(221deg, 72%, 54%);
   --color-error: hsl(0deg 70% 45%);
   --color-gray-100: hsl(0deg 0% 10%);
   --color-gray-300: hsl(0deg 0% 25%);
@@ -102,7 +102,6 @@ h1 {
   min-width: 250px;
   max-width: min(500px, 58vh, 100%);
 }
-
 .guess-results {
   flex: 1;
   display: flex;
@@ -267,5 +266,80 @@ input:disabled {
   }
   to {
     transform: translateY(0%);
+  }
+}
+
+/*
+  Stretch goal styles
+*/
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.keyboard .letter {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 4px;
+  display: grid;
+  place-content: center;
+  background: var(--color-gray-700);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.keyboard .letter.correct {
+  background: var(--color-success);
+  color: white;
+}
+.keyboard .letter.incorrect {
+  background: var(--color-gray-300);
+  color: white;
+}
+.keyboard .letter.misplaced {
+  background: var(--color-warning);
+  color: white;
+}
+
+.score {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 16px;
+  border-radius: 8px;
+  border: 2px solid var(--color-gray-700);
+}
+
+/* Additional styling for positioning */
+.score-container {
+  position: relative;
+}
+
+.score-container .score {
+  position: absolute;
+  top: 24px;
+  right: -225px;
+}
+
+@media (max-width: 425px) {
+  .score {
+    text-align: center;
+    font-size: 1rem;
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid var(--color-gray-700);
+  }
+
+  .score-container .score {
+    position: relative;
+    margin-bottom: 1rem;
+    right: 0px;
+    top: 24px;
   }
 }
