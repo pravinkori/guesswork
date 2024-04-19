@@ -1,10 +1,8 @@
-// import styles from "./Score.module.css";
-
 const Score = ({ score }) => {
   return (
     // <div className={styles.score}>
-    <div className="score">
-      <p>Score: {score}</p>
+    <div className="score-container">
+      <p className="score">Score: {score}</p>
     </div>
   );
 };
