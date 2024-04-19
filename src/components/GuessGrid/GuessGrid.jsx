@@ -1,4 +1,4 @@
-import { checkGuess } from "../../game-helpers";
+// import { checkGuess } from "../../game-helpers";
 import { range } from "../../utils";
 
 // Cell component represents a single cell in the GuessGrid
@@ -11,9 +11,9 @@ function Cell({ letter, status }) {
 }
 
 // GuessGrid component receives a value (a guess) and displays it
-function GuessGrid({ value, answer }) {
+function GuessGrid({ value }) {
   // Check the correctness of the guess against the answer
-  const result = checkGuess(value, answer);
+  // const result = checkGuess(value, answer);
 
   return (
     <div>
@@ -24,8 +24,8 @@ function GuessGrid({ value, answer }) {
           <Cell
             key={num}
             // Pass the letter and status of the guess to the Cell component
-            letter={result ? result[num].letter : undefined}
-            status={result ? result[num].status : undefined}
+            letter={value ? value[num].letter : undefined}
+            status={value ? value[num].status : undefined}
           />
         ))}
       </p>
